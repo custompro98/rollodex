@@ -35,7 +35,7 @@ import tractor from "../images/tractor.webp";
 import winfordBradfordRutherford from "../images/winford-bradford-rutherford.webp";
 import wingo from "../images/wingo.webp";
 
-const q = Astro.url.searchParams.get("q");
+const q = Astro.url.searchParams.get("q")?.trim().toLowerCase();
 
 const cars = [
   { name: "Aiken Axler", image: aikenAxler, number: 28 },
@@ -81,7 +81,7 @@ const cars = [
 
     return (
       car.number?.toString()?.startsWith(q) ||
-      car.name.toLowerCase().includes(q.toLowerCase())
+      car.name.toLowerCase().includes(q)
     );
   })
   .sort((a, b) => {
